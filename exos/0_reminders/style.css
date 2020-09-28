@@ -1,3 +1,61 @@
 body {
   padding: 2rem;
 }
+
+h1,
+#coucou {
+  color: red;
+}
+
+.hello {
+  color: blue;
+}
+
+p {
+  color: green;
+  display: inline-block;
+}
+
+p:hover {
+  font-size: 1.5rem;
+}
+
+.test {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 3px solid black;
+  height: 500px;
+}
+
+.test div {
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+
+.test div:first-child {
+  background: blue;
+  position: absolute;
+  right: 10px;
+  top: 50px;
+}
+
+.test2 {
+  border: 2px solid black;
+  height: 50px;
+  width: 100%;
+}
+
+.test2 div {
+  height: 100%;
+  width: 1%;
+  background: green;
+  transition: width 1s ease-in-out, background 1s ease-in-out;
+}
+
+div.full {
+  width: 100%;
+  background: red;
+}
