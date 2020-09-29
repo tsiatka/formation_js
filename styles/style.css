@@ -12,3 +12,27 @@ section {
   display: flex;
   justify-content: center;
 }
+
+.color {
+  padding: 1rem;
+  margin: 1rem;
+  color: white;
+  cursor: pointer;
+}
+
+.carre {
+  background: black;
+  height: 5rem;
+  width: 5rem;
+  cursor: pointer;
+}
+
+.harry {
+  padding: 1rem;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+}

@@ -33,6 +33,27 @@
 
 const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
 
+const section1 = document.getElementById('exo1');
+
+function makeColorDiv(color) {
+  const div = document.createElement('div');
+
+  div.textContent = color;
+
+  div.classList.add('color');
+  div.style.background = color;
+
+  div.addEventListener('click', function () {
+    console.log('Color', color);
+  });
+
+  return div;
+}
+
+colors.map(makeColorDiv).forEach(function (div) {
+  section1.append(div);
+});
+
 // -------------------------------
 
 /* Exercice 2: Taille
@@ -41,6 +62,20 @@ const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
     - Lui ajouter un listener au mousemove, qui change sa hauteur/largeur
     en fonction de la position de la souris à l'écran (event.clientX, event.clientY)
 */
+
+const section2 = document.createElement('section');
+section2.id = 'exo2';
+document.body.append(section2);
+
+const carre = document.createElement('div');
+carre.classList.add('carre');
+
+section2.append(carre);
+
+carre.addEventListener('mousemove', function (event) {
+  carre.style.height = event.clientY / 2 + 'px';
+  carre.style.width = event.clientX / 2 + 'px';
+});
 
 // -------------------------------
 
@@ -53,6 +88,35 @@ const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
 
 const names = ['Harry', 'Hermione', 'Ron', 'Sirius', 'Hagrid', 'Albus'];
 
+function random(n) {
+  return Math.floor(Math.random() * n);
+}
+
+const section3 = document.createElement('section');
+section3.id = 'exo3';
+document.body.append(section3);
+
+function createPerson(oldP) {
+  const i = !oldP ? 0 : random(names.length);
+  const name = names[i];
+
+  const newPerson = document.createElement('div');
+  newPerson.classList.add('harry');
+  newPerson.textContent = name;
+
+  newPerson.addEventListener('click', function () {
+    createPerson(newPerson);
+  });
+
+  if (!oldP) {
+    section3.append(newPerson);
+  } else {
+    oldP.replaceWith(newPerson);
+  }
+  return newPerson;
+}
+
+createPerson();
 // -------------------------------
 
 /* Exercice 4: Tracking de la souris
@@ -61,6 +125,31 @@ const names = ['Harry', 'Hermione', 'Ron', 'Sirius', 'Hagrid', 'Albus'];
     - Lui ajouter un listener qui active/désactive le tracking
     de la position de la souris dans la fenêtre (event.clientX, event.clientY)
 */
+
+const section4 = document.createElement('section');
+section4.id = 'exo4';
+document.body.append(section4);
+
+const button = document.createElement('button');
+button.textContent = 'Track';
+section4.append(button);
+
+let isTracking = false;
+
+function track(e) {
+  console.log('X', e.clientX, 'Y', e.clientY);
+}
+
+button.addEventListener('click', function () {
+  isTracking = !isTracking;
+  console.log('Coucou', isTracking);
+
+  if (isTracking) {
+    window.addEventListener('mousemove', track);
+  } else {
+    window.removeEventListener('mousemove', track);
+  }
+});
 
 /* Exercice Bonus: Click and drag
     - Créer une <section> avec l'id 'exo5', et l'ajouter au body
