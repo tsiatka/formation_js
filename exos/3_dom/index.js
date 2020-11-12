@@ -75,12 +75,13 @@ function random(max){
     return Math.floor(Math.random() * max);
 }
 
-divPotter.addEventListener(
+section3.addEventListener(
     'click',
     function () {
-        divPotter.remove();
-        divPotter.textContent = names[random(names.length)]
-        section3.append(divPotter);
+        section3.firstChild.remove();
+        const newdivPotter = document.createElement('div');
+        newdivPotter.textContent = names[random(names.length)]
+        section3.append(newdivPotter);
     }
 );
 
@@ -153,15 +154,16 @@ section5.append(dragDiv);
 
 
 dragDiv.addEventListener('mousedown', mouseDown);
-dragDiv.addEventListener('mouseup', mouseUp);
 
 function mouseUp() {
     window.removeEventListener('mousemove', move);
+    window.removeEventListener('mousedown', move);
 }
 
 function mouseDown() {
     dragDiv.style.position = 'absolute';
     window.addEventListener('mousemove', move);
+    dragDiv.addEventListener('mouseup', mouseUp);
 }
 
 function move(e) {
